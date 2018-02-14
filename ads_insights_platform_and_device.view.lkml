@@ -3,7 +3,7 @@ include: "stitch.view.lkml"
 view: ads_insights_platform_and_device {
   extends: ["stitch"]
 
-  sql_table_name: facebook_ads.ads_insights_platform_and_device ;;
+  sql_table_name: {{ _user_attributes["facebook_schema"] }}.ads_insights_platform_and_device ;;
 
   dimension: account_id {
     type: string

@@ -1,4 +1,4 @@
-connection: "bigquery-connectors-facebook-ads"
+connection: {{ _user_attributes["facebook_connection"] }}
 
 # include all the views
 include: "*.view"
