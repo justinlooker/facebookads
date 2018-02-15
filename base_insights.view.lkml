@@ -37,7 +37,7 @@ view: base_insights {
     label: "Cost per Impression"
     description: "Average cost per ad impression viewed."
     type: number
-    sql: ${total_cost_usd}*1.0 / NULLIF(${total_impressions},0) ;;
+    sql: ${total_spend}*1.0 / NULLIF(${total_impressions},0) ;;
     value_format_name: usd
   }
 
@@ -45,7 +45,7 @@ view: base_insights {
     label: "Cost per Click"
     description: "Average cost per ad click."
     type: number
-    sql: ${total_cost_usd}*1.0 / NULLIF(${total_clicks},0) ;;
+    sql: ${total_spend}*1.0 / NULLIF(${total_clicks},0) ;;
     value_format_name: usd
   }
 
