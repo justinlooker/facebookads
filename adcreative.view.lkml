@@ -3,7 +3,7 @@ include: "stitch.view.lkml"
 view: adcreative {
   extends: ["stitch"]
 
-  sql_table_name: facebook_ads.adcreative ;;
+  sql_table_name: {{ _user_attributes["facebook_schema"] }}.adcreative ;;
 
   dimension: id {
     primary_key: yes

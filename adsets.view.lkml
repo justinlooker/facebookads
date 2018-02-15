@@ -3,7 +3,7 @@ include: "stitch.view.lkml"
 view: adsets {
   extends: ["stitch"]
 
-  sql_table_name: facebook_ads.adsets ;;
+  sql_table_name: {{ _user_attributes["facebook_schema"] }}.adsets ;;
 
   dimension: id {
     primary_key: yes
