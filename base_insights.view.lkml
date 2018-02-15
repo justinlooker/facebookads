@@ -57,6 +57,14 @@ view: base_insights {
     value_format_name: percent_2
   }
 
+  measure: average_frequency {
+    label: "Frequency"
+    description: "Average impressions per reach."
+    type: number
+    sql: ${total_impressions}*1.0 / NULLIF(${total_reach},0) ;;
+    value_format_name: usd
+  }
+
   dimension: account_id {
     type: string
     sql: ${TABLE}.account_id ;;
