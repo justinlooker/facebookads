@@ -13,7 +13,7 @@ view: base_insights {
     type: sum
     sql: ${reach} ;;
     label: "Reach"
-    description: "Total ad reach."
+    description: "Total ad reach. This will count users that see multiple ads multiple times."
     value_format_name: decimal_0
   }
 
