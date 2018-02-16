@@ -118,6 +118,18 @@ explore: ads {
     relationship: one_to_many
   }
 
+  join: ads__targeting__geo_locations__countries {
+    view_label: "Ads: Targeting Geo Locations Countries"
+    sql: LEFT JOIN UNNEST(${ads__targeting__geo_locations.countries}) as ads__targeting__geo_locations__countries ;;
+    relationship: one_to_many
+  }
+
+  join: ads__targeting__geo_locations__location_types {
+    view_label: "Ads: Targeting Geo Locations Location Types"
+    sql: LEFT JOIN UNNEST(${ads__targeting__geo_locations.location_types}) as ads__targeting__geo_locations__location_types ;;
+    relationship: one_to_many
+  }
+
   join: ads__targeting__geo_locations__zips {
     view_label: "Ads: Targeting Geo Locations Zips"
     sql: LEFT JOIN UNNEST(${ads__targeting__geo_locations.zips}) as ads__targeting__geo_locations__zips ;;
@@ -180,7 +192,7 @@ explore: ads {
 
   join: ads__targeting__flexible_spec {
     view_label: "Ads: Targeting Flexible Spec"
-    sql: LEFT JOIN UNNEST([${ads__targeting.flexible_spec}]) as ads__targeting__flexible_spec ;;
+    sql: LEFT JOIN UNNEST(${ads__targeting.flexible_spec}) as ads__targeting__flexible_spec ;;
     relationship: one_to_one
   }
 }
@@ -605,6 +617,18 @@ explore: adsets {
   join: adsets__targeting__geo_locations__cities {
     view_label: "Adsets: Targeting Geo Locations Cities"
     sql: LEFT JOIN UNNEST(${adsets__targeting__geo_locations.cities}) as adsets__targeting__geo_locations__cities ;;
+    relationship: one_to_many
+  }
+
+  join: adsets__targeting__geo_locations__countries {
+    view_label: "Ads: Targeting Geo Locations Countries"
+    sql: LEFT JOIN UNNEST(${adsets__targeting__geo_locations.countries}) as adsets__targeting__geo_locations__countries ;;
+    relationship: one_to_many
+  }
+
+  join: adsets__targeting__geo_locations__location_types {
+    view_label: "Ads: Targeting Geo Locations Location Types"
+    sql: LEFT JOIN UNNEST(${adsets__targeting__geo_locations.location_types}) as adsets__targeting__geo_locations__location_types ;;
     relationship: one_to_many
   }
 

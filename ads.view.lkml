@@ -338,12 +338,12 @@ view: ads__targeting__geo_locations {
   }
 
   dimension: countries {
-    type: string
+    hidden: yes
     sql: ${TABLE}.countries ;;
   }
 
   dimension: location_types {
-    type: string
+    hidden: yes
     sql: ${TABLE}.location_types ;;
   }
 
@@ -393,6 +393,21 @@ view: ads__targeting__geo_locations__cities {
   dimension: region_id {
     type: string
     sql: ${TABLE}.region_id ;;
+  }
+}
+
+view: ads__targeting__geo_locations__countries {
+  dimension: country {
+    type: string
+    map_layer_name: countries
+    sql: ${TABLE} ;;
+  }
+}
+
+view: ads__targeting__geo_locations__location_types {
+  dimension: location_type {
+    type: string
+    sql: ${TABLE} ;;
   }
 }
 
