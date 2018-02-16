@@ -5,10 +5,10 @@ view: ads {
 
   sql_table_name: {{ _user_attributes["facebook_schema"] }}.ads ;;
 
-  dimension: source_ad_id {
+  dimension: id {
     primary_key: yes
     type: string
-    sql: ${TABLE}.source_ad_id ;;
+    sql: ${TABLE}.id ;;
   }
 
   dimension: account_id {
@@ -18,7 +18,6 @@ view: ads {
 
   dimension: adset_id {
     type: string
-    # hidden: yes
     sql: ${TABLE}.adset_id ;;
   }
 
@@ -39,7 +38,6 @@ view: ads {
 
   dimension: campaign_id {
     type: string
-    # hidden: yes
     sql: ${TABLE}.campaign_id ;;
   }
 
@@ -62,19 +60,13 @@ view: ads {
     sql: ${TABLE}.created_time ;;
   }
 
-  dimension: creative {
-    hidden: yes
-    sql: ${TABLE}.creative ;;
+  dimension: creative_id {
+    sql: ${TABLE}.creative.id ;;
   }
 
   dimension: effective_status {
     type: string
     sql: ${TABLE}.effective_status ;;
-  }
-
-  dimension: id {
-    type: string
-    sql: ${TABLE}.id ;;
   }
 
   dimension: last_updated_by_app_id {
@@ -90,6 +82,11 @@ view: ads {
   dimension: recommendations {
     hidden: yes
     sql: ${TABLE}.recommendations ;;
+  }
+
+  dimension: source_ad_id {
+    type: string
+    sql: ${TABLE}.source_ad_id ;;
   }
 
   dimension: status {
@@ -212,19 +209,6 @@ view: ads__recommendations {
   dimension: title {
     type: string
     sql: ${TABLE}.title ;;
-  }
-}
-
-view: ads__creative {
-  dimension: id {
-    primary_key: yes
-    type: string
-    sql: ${TABLE}.id ;;
-  }
-
-  dimension: creative_id {
-    type: string
-    sql: ${TABLE}.creative_id ;;
   }
 }
 

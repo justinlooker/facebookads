@@ -14,6 +14,24 @@ datagroup: facebook_ads_default_datagroup {
 persist_with: facebook_ads_default_datagroup
 
 explore: adcreative {
+  join: ads {
+    type: left_outer
+    sql_on: ${ads.creative_id} = ${adcreative.id} ;;
+    relationship: one_to_one
+  }
+
+  join: adsets {
+    type: left_outer
+    sql_on: ${ads.adset_id} = ${adsets.id} ;;
+    relationship: many_to_one
+  }
+
+  join: campaigns {
+    type: left_outer
+    sql_on: ${ads.campaign_id} = ${campaigns.id} ;;
+    relationship: many_to_one
+  }
+
   join: adcreative__object_story_spec {
     view_label: "Adcreative: Object Story Spec"
     sql: LEFT JOIN UNNEST([${adcreative.object_story_spec}]) as adcreative__object_story_spec ;;
@@ -52,6 +70,12 @@ explore: adcreative {
 }
 
 explore: ads {
+  join: adcreative {
+    type: left_outer
+    sql_on: ${ads.creative_id} = ${adcreative.id} ;;
+    relationship: one_to_one
+  }
+
   join: adsets {
     type: left_outer
     sql_on: ${ads.adset_id} = ${adsets.id} ;;
@@ -80,12 +104,6 @@ explore: ads {
     view_label: "Ads: Recommendations"
     sql: LEFT JOIN UNNEST(${ads.recommendations}) as ads__recommendations ;;
     relationship: one_to_many
-  }
-
-  join: ads__creative {
-    view_label: "Ads: Creative"
-    sql: LEFT JOIN UNNEST([${ads.creative}]) as ads__creative ;;
-    relationship: one_to_one
   }
 
   join: ads__targeting {
@@ -212,7 +230,7 @@ explore: ads_insights {
 
   join: ads {
     type: left_outer
-    sql_on: ${ads_insights.ad_id} = ${ads.source_ad_id} ;;
+    sql_on: ${ads_insights.ad_id} = ${ads.id} ;;
     relationship: many_to_one
   }
 
@@ -298,7 +316,7 @@ explore: ads_insights_age_and_gender {
 
   join: ads {
     type: left_outer
-    sql_on: ${ads_insights_age_and_gender.ad_id} = ${ads.source_ad_id} ;;
+    sql_on: ${ads_insights_age_and_gender.ad_id} = ${ads.id} ;;
     relationship: many_to_one
   }
 
@@ -384,7 +402,7 @@ explore: ads_insights_country {
 
   join: ads {
     type: left_outer
-    sql_on: ${ads_insights_country.ad_id} = ${ads.source_ad_id} ;;
+    sql_on: ${ads_insights_country.ad_id} = ${ads.id} ;;
     relationship: many_to_one
   }
 
@@ -470,7 +488,7 @@ explore: ads_insights_platform_and_device {
 
   join: ads {
     type: left_outer
-    sql_on: ${ads_insights_platform_and_device.ad_id} = ${ads.source_ad_id} ;;
+    sql_on: ${ads_insights_platform_and_device.ad_id} = ${ads.id} ;;
     relationship: many_to_one
   }
 
