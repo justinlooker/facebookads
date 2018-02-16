@@ -234,6 +234,12 @@ explore: ads_insights {
     relationship: many_to_one
   }
 
+  join: adcreative {
+    type: left_outer
+    sql_on: ${ads.creative_id} = ${adcreative.id} ;;
+    relationship: one_to_one
+  }
+
   join: ads_insights__video_30_sec_watched_actions {
     view_label: "Ads Insights: Video 30 Sec Watched Actions"
     sql: LEFT JOIN UNNEST(${ads_insights.video_30_sec_watched_actions}) as ads_insights__video_30_sec_watched_actions ;;
@@ -318,6 +324,12 @@ explore: ads_insights_age_and_gender {
     type: left_outer
     sql_on: ${ads_insights_age_and_gender.ad_id} = ${ads.id} ;;
     relationship: many_to_one
+  }
+
+  join: adcreative {
+    type: left_outer
+    sql_on: ${ads.creative_id} = ${adcreative.id} ;;
+    relationship: one_to_one
   }
 
   join: adsets {
@@ -406,6 +418,12 @@ explore: ads_insights_country {
     relationship: many_to_one
   }
 
+  join: adcreative {
+    type: left_outer
+    sql_on: ${ads.creative_id} = ${adcreative.id} ;;
+    relationship: one_to_one
+  }
+
   join: adsets {
     type: left_outer
     sql_on: ${ads_insights_country.adset_id} = ${adsets.id} ;;
@@ -490,6 +508,12 @@ explore: ads_insights_platform_and_device {
     type: left_outer
     sql_on: ${ads_insights_platform_and_device.ad_id} = ${ads.id} ;;
     relationship: many_to_one
+  }
+
+  join: adcreative {
+    type: left_outer
+    sql_on: ${ads.creative_id} = ${adcreative.id} ;;
+    relationship: one_to_one
   }
 
   join: adsets {

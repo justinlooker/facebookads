@@ -34,15 +34,15 @@ view: base_insights {
   }
 
   measure: average_cost_per_impression {
-    label: "Cost per Impression"
-    description: "Average cost per ad impression viewed."
+    label: "CPM"
+    description: "Average cost per 1000 ad impressions viewed."
     type: number
-    sql: ${total_spend}*1.0 / NULLIF(${total_impressions},0) ;;
+    sql: ${total_spend}*1000.0 / NULLIF(${total_impressions},0) ;;
     value_format_name: usd
   }
 
   measure: average_cost_per_click {
-    label: "Cost per Click"
+    label: "CPC"
     description: "Average cost per ad click."
     type: number
     sql: ${total_spend}*1.0 / NULLIF(${total_clicks},0) ;;
@@ -50,7 +50,7 @@ view: base_insights {
   }
 
   measure: average_click_rate {
-    label: "Click Through Rate"
+    label: "CTR"
     description: "Percent of people that click on an ad."
     type: number
     sql: ${total_clicks}*1.0/nullif(${total_impressions},0) ;;
@@ -62,7 +62,7 @@ view: base_insights {
     description: "Average impressions per reach."
     type: number
     sql: ${total_impressions}*1.0 / NULLIF(${total_reach},0) ;;
-    value_format_name: usd
+    value_format_name: decimal_2
   }
 
   dimension: account_id {

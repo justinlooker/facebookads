@@ -61,6 +61,7 @@ view: ads {
   }
 
   dimension: creative_id {
+    type: string
     sql: ${TABLE}.creative.id ;;
   }
 
